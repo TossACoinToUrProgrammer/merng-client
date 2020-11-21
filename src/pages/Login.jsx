@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import React, { useContext, useState } from "react";
-import { Button, Form, Message } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import { ErrorMessage } from "../components/ErrorMessage";
 import Preloader from "../components/Preloader";
 import { AuthContext } from "../context/auth";

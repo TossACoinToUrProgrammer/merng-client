@@ -12,7 +12,7 @@ import {
 } from "semantic-ui-react";
 import moment from "moment";
 
-import { CREATE_COMMENT_MUTATION, FETCH_POST_QUERY, FETCH_POSTS_QUERY } from "../utils/graphql";
+import { CREATE_COMMENT_MUTATION, FETCH_POST_QUERY } from "../utils/graphql";
 import Preloader from "./Preloader";
 import LikeButton from "./LikeButton";
 import { AuthContext } from "../context/auth";

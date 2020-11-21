@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
 
-import { DELETE_POST_MUTATION, FETCH_POSTS_QUERY } from "../utils/graphql";
+import { DELETE_POST_MUTATION } from "../utils/graphql";
 import DeleteButton from "./DeleteButton";
 
 const DeletePostButton = ({ post: { id }, callback }) => {
