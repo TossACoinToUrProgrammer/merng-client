@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 import { AuthContext } from "../context/auth";
 
+let setActiveLink;
+
 const MenuBar = (props) => {
   const { user, logout } = useContext(AuthContext);
 
@@ -10,6 +12,11 @@ const MenuBar = (props) => {
   const path = pathname === "/" ? "home" : pathname.substr(1);
 
   const [activeItem, setActiveItem] = useState(path);
+  
+  setActiveLink = (newPath) => {
+    props.history.push('/login');
+    setActiveItem(newPath);
+  };
 
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
@@ -57,4 +64,5 @@ const MenuBar = (props) => {
   );
 };
 
+export  {setActiveLink};
 export default MenuBar;

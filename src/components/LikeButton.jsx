@@ -2,6 +2,7 @@ import { useMutation } from "@apollo/client";
 import React from "react";
 import { Button, Icon, Label, Popup } from "semantic-ui-react";
 import { LIKE_POST_MUTATION } from "../utils/graphql";
+import { setActiveLink } from "./MenuBar";
 import Preloader from "./Preloader";
 
 const LikeButton = ({ user, post: { id, likesCount, likes } }) => {
@@ -18,7 +19,8 @@ const LikeButton = ({ user, post: { id, likesCount, likes } }) => {
   });
 
   const likePostHandler = () => {
-    likePost();
+    if(user) likePost();
+    else setActiveLink('login');
   };
 
   return (

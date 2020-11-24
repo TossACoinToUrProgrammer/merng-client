@@ -19,6 +19,8 @@ import { AuthContext } from "../context/auth";
 import { useForm } from "../utils/hooks";
 import DeletePostButton from "./DeletePostButton";
 import DeleteCommentButton from "./DeleteCommentButton";
+import { setActiveLink } from "./MenuBar";
+import { Link } from "react-router-dom";
 
 const SinglePost = (props) => {
   const id = props.match.params.postId;
@@ -42,7 +44,13 @@ const SinglePost = (props) => {
       console.log(err);
     },
   });
-
+  const onSubmitHandler = (e) => {
+    if(user){
+      onSubmit(e);
+    } else {
+      setActiveLink('login');
+    }
+  }
   if (!id) return <h3>Post id is not provided</h3>;
 
   if (!post.id && !loading) return <h3>Post not found</h3>;
@@ -83,7 +91,7 @@ const SinglePost = (props) => {
             <Grid.Column width={10}>
               <Card fluid>
                 <Card.Content>
-                  <Card.Header>{username}</Card.Header>
+                <Card.Header as={Link} to={`/users/${username}`}>{username}</Card.Header>
                   <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
                   <Card.Description>{body}</Card.Description>
                 </Card.Content>
@@ -101,13 +109,15 @@ const SinglePost = (props) => {
                       {commentsCount}
                     </Label>
                   </Button>
+                  {user && user.username === username && 
                   <DeletePostButton
                     callback={deletePostCallback}
                     post={{ id: postId }}
                   />
+                  }
                 </Card.Content>
               </Card>
-              <Form onSubmit={onSubmit}>
+              <Form onSubmit={onSubmitHandler}>
                 <Grid>
                   <Grid.Row>
                     <Grid.Column width={13}>

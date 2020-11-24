@@ -15,7 +15,7 @@ const Home = () => {
     loading,
     data: { getPosts: posts = [] } = {},
   } = useQuery(FETCH_POSTS_QUERY);
-  
+
   return (
     <Grid columns={3} divided>
       <Grid.Row>
@@ -28,7 +28,7 @@ const Home = () => {
           </Grid.Column>
         )}
         {loading ? (
-          <Preloader />
+          <div style={{margin:"auto"}}><Preloader /></div>
         ) : (
           posts.map((post) => {
             return (
