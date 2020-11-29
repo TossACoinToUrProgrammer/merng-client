@@ -11,6 +11,7 @@ import { AuthProvider } from "./context/auth";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Subscribes from "./pages/Subscribes";
 import UserPage from "./pages/UserPage";
 import AuthRoute from "./utils/AuthRoute";
 
@@ -23,8 +24,9 @@ function App() {
           <Route exact path="/" component={Home} />
           <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/register" component={Register} />
+          <Route exact path="/subscribes" component={Subscribes} />
           <Route exact path="/posts/:postId" component={SinglePost} />
-          <Route exact path="/users/:userId" component={UserPage} />
+          <Route exact path="/users/:username" component={UserPage} />
         </Container>
       </Router>
     </AuthProvider>

@@ -64,6 +64,9 @@ const SinglePost = (props) => {
     likes,
     commentsCount,
     comments,
+    user: {
+      img
+    } = {}
   } = post;
 
   const deletePostCallback = () => {
@@ -85,7 +88,7 @@ const SinglePost = (props) => {
               <Image
                 floated="right"
                 size="small"
-                src="https://react.semantic-ui.com/images/avatar/large/molly.png"
+                src= {img || "https://react.semantic-ui.com/images/avatar/large/molly.png"}
               />
             </Grid.Column>
             <Grid.Column width={10}>

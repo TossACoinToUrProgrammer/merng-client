@@ -30,16 +30,19 @@ const CREATE_POST = gql`
   }
 `;
 
-const PostForm = () => {
+const PostForm = ({ query, variables}) => {
   const { onChange, onSubmit, values } = useForm(addPost, { body: "" });
 
   const [createPost, { loading, error }] = useMutation(CREATE_POST, {
     update(proxy, result) {
       const data = proxy.readQuery({
-        query: FETCH_POSTS_QUERY,
+        query: query || FETCH_POSTS_QUERY,
+        variables
       });
+
       proxy.writeQuery({
-        query: FETCH_POSTS_QUERY,
+        query: query || FETCH_POSTS_QUERY,
+        variables,
         data: { getPosts: [result.data.createPost, ...data.getPosts] },
       });
       values.body = "";
@@ -73,7 +76,7 @@ const PostForm = () => {
         <TransitionGroup>
         <div className="ui error message" style={{marginBottom: 20}}>
           <ul className="list">
-            <li>{error.graphQLErrors[0].message}</li>
+            <li>{error.message}</li>
           </ul>
         </div> 
         </TransitionGroup>

@@ -16,6 +16,9 @@ query {
       username
       body
     }
+    user {
+      img
+    }
   }
 }
 `;
@@ -36,6 +39,9 @@ query getPost($id: ID!){
       username
       body
       createdAt
+    }
+    user {
+      img
     }
   }
 }
@@ -108,4 +114,49 @@ mutation deleteComment($commentId: ID!, $postId:ID!){
   }
 }
 `
-
+export const GET_USER_QUERY = gql`
+  query getUser($username: String!){
+    getUser(username:$username){
+      id
+      username
+      createdAt
+      email
+      img
+      follows
+      followsCount
+      followers
+      followersCount
+    }
+  }
+`;
+export const FOLLOW_MUTATION = gql`
+mutation follow($id: ID!) {
+  follow(id: $id) {
+    id
+    username
+    followers
+  }
+}
+`;
+export const GET_SUBSCRIBES_POSTS_QUERY = gql`
+query getPosts($usernames: [String]) {
+  getPosts(usernames: $usernames) {
+    id
+    body
+    username
+    createdAt
+    likesCount
+    likes {
+      username
+    }
+    commentsCount
+    comments {
+      username
+      body
+    }
+    user {
+      img
+    }
+  }
+}
+`;

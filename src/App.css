@@ -1,4 +1,6 @@
-
+*{
+    box-sizing: border-box;
+}
 .page-title{
     display: block !important;
     width: 100%;

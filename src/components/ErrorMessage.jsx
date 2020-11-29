@@ -2,7 +2,7 @@ import React from "react";
 
 export const ErrorMessage = ({ error }) => {
   let result = error;
-  if (Object.keys(error).length > 0) {
+  if (Object.keys(error).length > 0 && typeof error != "string") {
     result = Object.values(error).map((e, i) => <li key={i}>{e}</li>);
   }
   return (

@@ -19,12 +19,13 @@ const MenuBar = (props) => {
   };
 
   const handleItemClick = (e, { name }) => setActiveItem(name);
-
   return (
     <Menu pointing secondary size="massive" color="teal">
       {user ? (
         <>
-          <Menu.Item name={user.username} active as={Link} to="/" />
+          <Menu.Item name={user.username} onClick={handleItemClick} active={activeItem === user.username} as={Link} to={"/users/"+user.username} />
+          <Menu.Item name='main' onClick={handleItemClick} active={activeItem === "home" || activeItem === "main"} as={Link} to="/" />
+          <Menu.Item name='subscribes' onClick={handleItemClick} active={activeItem === "subscribes"} as={Link} to="/subscribes" />
           <Menu.Item
           position='right'
             name="logout"

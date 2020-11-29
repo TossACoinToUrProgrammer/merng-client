@@ -1,0 +1,28 @@
+.wrapper{
+    width: 100%;
+    border-bottom: teal 1px solid;
+    padding-bottom: 5px;
+}
+.container{
+    overflow: auto;
+    margin:auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+.item{
+    margin: 0 10px 0 10px;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.item__img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}

@@ -16,7 +16,11 @@ const PostCard = ({
     commentsCount,
     comments,
     likes,
+    user: {
+      img
+    } = {}
   },
+  deleteButtonProps
 }) => {
   const { user } = useContext(AuthContext);
 
@@ -25,8 +29,9 @@ const PostCard = ({
       <Card.Content>
         <Image
           floated="right"
-          size="mini"
-          src="https://react.semantic-ui.com/images/avatar/large/molly.png"
+          style={{width:'60px', height: '60px'}}
+          avatar
+          src={ img || "https://react.semantic-ui.com/images/avatar/large/molly.png"}
         />
         <Card.Header as={Link} to={`/users/${username}`}>{username}</Card.Header>
         <Card.Meta as={Link} to={`/posts/${id}`}>
@@ -52,7 +57,7 @@ const PostCard = ({
         />
 
         {user && user.username === username && (
-          <DeletePostButton post={{ id }} />
+          <DeletePostButton post={{ id }} {...deleteButtonProps} />
         )}
       </Card.Content>
     </Card>
